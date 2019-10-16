@@ -1,8 +1,6 @@
 package com.beemdevelopment.aegis.ui.slides;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.hardware.fingerprint.FingerprintManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,18 +9,18 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
+
 import com.beemdevelopment.aegis.R;
-import com.beemdevelopment.aegis.helpers.FingerprintHelper;
+import com.beemdevelopment.aegis.helpers.BiometricHelper;
 import com.github.paolorotolo.appintro.ISlidePolicy;
 import com.google.android.material.snackbar.Snackbar;
-
-import androidx.fragment.app.Fragment;
 
 public class CustomAuthenticationSlide extends Fragment implements ISlidePolicy, RadioGroup.OnCheckedChangeListener {
     public static final int CRYPT_TYPE_INVALID = 0;
     public static final int CRYPT_TYPE_NONE = 1;
     public static final int CRYPT_TYPE_PASS = 2;
-    public static final int CRYPT_TYPE_FINGER = 3;
+    public static final int CRYPT_TYPE_BIOMETRIC = 3;
 
     private RadioGroup _buttonGroup;
     private int _bgColor;
@@ -35,7 +33,7 @@ public class CustomAuthenticationSlide extends Fragment implements ISlidePolicy,
         onCheckedChanged(_buttonGroup, _buttonGroup.getCheckedRadioButtonId());
 
         // only enable the fingerprint option if the api version is new enough, permission is granted and a scanner is found
-        if (FingerprintHelper.isSupported() && FingerprintHelper.isAvailable(getContext())) {
+        if (BiometricHelper.isSupported() && BiometricHelper.isAvailable(getContext())) {
             RadioButton button = view.findViewById(R.id.rb_fingerprint);
             TextView text = view.findViewById(R.id.text_rb_fingerprint);
             button.setEnabled(true);
@@ -76,7 +74,7 @@ public class CustomAuthenticationSlide extends Fragment implements ISlidePolicy,
                 id = CRYPT_TYPE_PASS;
                 break;
             case R.id.rb_fingerprint:
-                id = CRYPT_TYPE_FINGER;
+                id = CRYPT_TYPE_BIOMETRIC;
                 break;
             default:
                 throw new RuntimeException();

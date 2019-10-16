@@ -139,7 +139,7 @@ public abstract class Slot extends UUIDMap.Value {
                     slot = new PasswordSlot(uuid, key, keyParams, scryptParams, repaired);
                     break;
                 case Slot.TYPE_FINGERPRINT:
-                    slot = new FingerprintSlot(uuid, key, keyParams);
+                    slot = new BiometricSlot(uuid, key, keyParams);
                     break;
                 default:
                     throw new SlotException("unrecognized slot type");

@@ -59,30 +59,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/box_fingerprint"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="12dp"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:id="@+id/img_fingerprint_insert"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:orientation="horizontal"/>
-
-            <TextView
-                android:id="@+id/text_fingerprint"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="15dp"
-                android:text="@string/fingerprint_hint"
-                android:textColor="?attr/secondaryText"/>
-        </LinearLayout>
-        <LinearLayout
-            android:id="@+id/box_fingerprint_info"
+            android:id="@+id/box_biometric_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"

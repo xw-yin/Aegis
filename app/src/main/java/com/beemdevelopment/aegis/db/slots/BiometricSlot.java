@@ -4,12 +4,12 @@ import com.beemdevelopment.aegis.crypto.CryptParameters;
 
 import java.util.UUID;
 
-public class FingerprintSlot extends RawSlot {
-    public FingerprintSlot() {
+public class BiometricSlot extends RawSlot {
+    public BiometricSlot() {
         super();
     }
 
-    FingerprintSlot(UUID uuid, byte[] key, CryptParameters keyParams) {
+    BiometricSlot(UUID uuid, byte[] key, CryptParameters keyParams) {
         super(uuid, key, keyParams);
     }
 
