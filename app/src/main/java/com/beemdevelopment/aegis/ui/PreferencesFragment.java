@@ -118,7 +118,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
                             _result.putExtra("needsRecreate", true);
                             getActivity().recreate();
                         })
-                        .setPositiveButton(android.R.string.ok, null)
+                        .setNegativeButton(android.R.string.cancel, null)
                         .create());
 
                 return true;
@@ -149,7 +149,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
                             _result.putExtra("needsRefresh", true);
                             dialog.dismiss();
                         })
-                        .setPositiveButton(android.R.string.ok, null)
+                        .setNegativeButton(android.R.string.cancel, null)
                         .create());
 
                 return true;
@@ -237,7 +237,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
         });
 
         Preference tapToRevealTimePreference = findPreference("pref_tap_to_reveal_time");
-        tapToRevealTimePreference.setSummary(app.getPreferences().getTapToRevealTime() + " seconds");
+        tapToRevealTimePreference.setSummary(app.getPreferences().getTapToRevealTime() + " " + getString(R.string.seconds));
         tapToRevealTimePreference.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
@@ -245,7 +245,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
                     @Override
                     public void onNumberInputResult(int number) {
                         app.getPreferences().setTapToRevealTime(number);
-                        tapToRevealTimePreference.setSummary(number + " seconds");
+                        tapToRevealTimePreference.setSummary(number + " " + getString(R.string.seconds));
                         _result.putExtra("needsRefresh", true);
                     }
                 });
@@ -585,7 +585,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
         // TODO: create a custom layout to show a message AND a checkbox
         final AtomicReference<Boolean> checked = new AtomicReference<>(true);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity())
-                .setTitle("Export the database")
+                .setTitle(getString(R.string.pref_export_summary))
                 .setPositiveButton(android.R.string.ok, (dialog, which) -> {
                     String filename;
                     try {
@@ -602,7 +602,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
                 })
                 .setNegativeButton(android.R.string.cancel, null);
         if (_db.isEncryptionEnabled()) {
-            final String[] items = {"Keep the database encrypted"};
+            final String[] items = {getString(R.string.keep_the_database_encrypted)};
             final boolean[] checkedItems = {true};
             builder.setMultiChoiceItems(items, checkedItems, new DialogInterface.OnMultiChoiceClickListener() {
                 @Override
