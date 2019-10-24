@@ -264,6 +264,7 @@ public class PreferencesFragment extends PreferenceFragmentCompat {
                             .setTitle(R.string.disable_encryption)
                             .setMessage(getString(R.string.disable_encryption_description))
                             .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                                @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     try {
                                         _db.disableEncryption();
